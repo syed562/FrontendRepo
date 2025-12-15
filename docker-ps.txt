@@ -1,0 +1,18 @@
+CONTAINER ID   IMAGE                                          COMMAND                  CREATED          STATUS                      PORTS                                         NAMES
+3c19675e3b80   backend-flight-booking-app-passenger-service   "java -jar passenger…"   5 minutes ago    Up 4 minutes                0.0.0.0:9001->9001/tcp, [::]:9001->9001/tcp   passenger-service
+0a2afd76aae2   backend-flight-booking-app-flight-service      "java -jar flight-se…"   5 minutes ago    Up 4 minutes                0.0.0.0:9002->9002/tcp, [::]:9002->9002/tcp   flight-service
+2d8c01a11cdd   backend-flight-booking-app-email-service       "java -jar email-ser…"   5 minutes ago    Up 4 minutes                0.0.0.0:9005->9005/tcp, [::]:9005->9005/tcp   email-service
+40eebb1c51e8   backend-flight-booking-app-ticket-service      "java -jar ticket-se…"   5 minutes ago    Up 4 minutes                0.0.0.0:9003->9003/tcp, [::]:9003->9003/tcp   ticket-service
+716fd96e0c08   backend-flight-booking-app-auth-service        "java -jar app.jar"      5 minutes ago    Up 5 minutes                0.0.0.0:8085->8085/tcp, [::]:8085->8085/tcp   auth-service
+aab1dd9916eb   backend-flight-booking-app-config-server       "java -jar config-se…"   5 minutes ago    Up 5 minutes (healthy)      0.0.0.0:8888->8888/tcp, [::]:8888->8888/tcp   config-server
+7c4462b5a0c3   backend-flight-booking-app-api-gateway         "java -jar api-gatew…"   5 minutes ago    Up 5 minutes                0.0.0.0:8765->8765/tcp, [::]:8765->8765/tcp   api-gateway
+d67f98fedbf0   backend-flight-booking-app-eureka-server       "java -jar service-r…"   5 minutes ago    Up 5 minutes (healthy)      0.0.0.0:8761->8761/tcp, [::]:8761->8761/tcp   eureka-server
+4020829f7b01   confluentinc/cp-kafka:7.5.0                    "/etc/confluent/dock…"   16 minutes ago   Up 16 minutes (healthy)     0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp   kafka
+1ab99dd849d8   postgres:16                                    "docker-entrypoint.s…"   16 minutes ago   Up 16 minutes               0.0.0.0:5435->5432/tcp, [::]:5435->5432/tcp   postgres-ticket
+1bee7fbc4e12   mysql:8                                        "docker-entrypoint.s…"   17 minutes ago   Up 16 minutes (healthy)     0.0.0.0:3307->3306/tcp, [::]:3307->3306/tcp   mysql-db
+8adf75db3c18   postgres:16                                    "docker-entrypoint.s…"   17 minutes ago   Up 16 minutes               0.0.0.0:5433->5432/tcp, [::]:5433->5432/tcp   postgres-db
+796d02b1d818   postgres:16                                    "docker-entrypoint.s…"   17 minutes ago   Up 16 minutes               0.0.0.0:5434->5432/tcp, [::]:5434->5432/tcp   postgres-flight
+33553edaad54   confluentinc/cp-zookeeper:7.5.0                "/etc/confluent/dock…"   17 minutes ago   Up 16 minutes (healthy)     0.0.0.0:2181->2181/tcp, [::]:2181->2181/tcp   zookeeper
+c090047e0b96   mysql:8                                        "docker-entrypoint.s…"   25 hours ago     Exited (137) 10 hours ago                                                 mysql-auth
+50fdb900df8c   mysql:8                                        "docker-entrypoint.s…"   25 hours ago     Exited (137) 10 hours ago                                                 mysql-flight
+de0042dbfe02   mysql:8                                        "docker-entrypoint.s…"   25 hours ago     Exited (137) 7 hours ago                                                  mysql-booking
