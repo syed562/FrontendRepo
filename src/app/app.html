@@ -4,52 +4,27 @@
   </a>
 
   <div class="collapse navbar-collapse">
-  <ul class="navbar-nav ms-auto align-items-center gap-3">
+    <ul class="navbar-nav ms-auto align-items-center gap-3">
 
-  <li class="nav-item">
-    <a class="nav-link nav-home active" routerLink="/">Home</a>
-  </li>
+      <li class="nav-item">
+        <a class="nav-link nav-home active" routerLink="/">Home</a>
+      </li>
 
-  <li class="nav-item">
-    <a class="btn btn-nav-outline" routerLink="/signin">
-      Sign in
-    </a>
-  </li>
+      <li class="nav-item">
+        <a class="btn btn-nav-outline" routerLink="/signin">
+          Sign in
+        </a>
+      </li>
 
-  <li class="nav-item">
-    <a class="btn btn-nav-cta" routerLink="/signup">
-      Sign up
-    </a>
-  </li>
+      <li class="nav-item">
+        <a class="btn btn-nav-cta" routerLink="/signup">
+          Sign up
+        </a>
+      </li>
 
-</ul>
-
+    </ul>
   </div>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1>Book Flights Instantly</h1>
-    <p>Search and compare the best flight deals worldwide</p>
-
-    <!-- Your existing search card -->
-    <div class="search-card">
-      <div class="row g-3 align-items-center">
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="Enter origin" />
-        </div>
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="Enter destination" />
-        </div>
-        <div class="col-md-4 d-grid">
-          <button class="btn btn-primary btn-lg">Search Flights</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ONLY ROUTED CONTENT HERE -->
 <router-outlet></router-outlet>
