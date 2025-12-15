@@ -1,0 +1,18 @@
+<div class="d-flex  justify-content-center align-items-center min-vh-100">
+<form class="card p-4 shadow-sm" (ngSubmit)="submit()">
+  <div class="my-2">
+    <div class="my-2"><h3 class="text-center">Sign in</h3></div>
+
+    <div class="form-group">
+    <label class="my-1" for="exampleInputUsername">Username</label>
+    <input placeholder="Enter your username" [(ngModel)]="user.username" name="username" class="form-control" id="exampleInputUsername" >
+  </div>
+  <div class="form-group">
+    <label class="my-1" for="exampleInputPassword1">Password</label>
+    <input placeholder="Enter your password" [(ngModel)]="user.password" name="password" type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+</div>
+  <button type="submit" class="btn btn-primary my-4">Submit</button>
+
+</form>
+</div>

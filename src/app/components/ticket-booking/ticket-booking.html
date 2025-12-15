@@ -1,0 +1,36 @@
+<p>ticket-booking works!</p>
+<div class="d-flex justify-content-center align-items-center">
+<form>
+  <div class="form-group">
+    <label for="seatNo">SeatNo</label>
+    <input [(ngModel)]="seatNo" name="seatNo"
+      type="text"
+      class="form-control"
+      id="seatNo"
+      placeholder="Enter seatNO">
+  </div>
+
+  <button (click)=" bookTicket()" type="submit" class="btn btn-primary my-2">Book</button>
+</form>
+</div>
+<p>ticket-booking works!</p>
+
+@if(tickets$ | async; as tickets){
+<ul class="list-group" >
+  @for(ticket of tickets;track ticket.id){
+  <li class="list-group-item" >
+    <b>{{ ticket.origin }} → {{ ticket.destination }}</b><br />
+    PNR: {{ ticket.pnr }}<br />
+    {{ ticket.departureTime }} - {{ ticket.arrivalTime }}
+  </li>
+}
+
+
+ 
+  @if(tickets.length===0){
+ <li class="list-group-item text-muted" >
+    No tickets found
+  </li>
+  }
+</ul>
+}

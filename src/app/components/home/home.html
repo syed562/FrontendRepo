@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center align-items-center  my-3 w-100">
+
+<form class="card p-4 shadow-sm w-80 rounded-pill ">
+  <div class="d-flex gap-3 flex-row  justify-content-between">
+  <div ><h4 class="text-center">Search flights</h4></div>
+  <div class="form-group d-flex flex-row justify-content-between">
+    
+      
+    <label class="mx-3" for="originId">Origin</label>
+    <input placeholder="Enter origin" [(ngModel)]="req.origin" name="origin" id="originId" class="form-control form-control-sm py-1"  >
+  </div>
+  <div class="form-group d-flex flex-row justify-content-between">
+    <label class="mx-3" for="destinationId">Destination</label>
+    <input  placeholder="Enter destination" [(ngModel)]="req.destination" name="destination" id="destinationId"  class="form-control form-control-sm py-1" >
+  </div>
+  <button (click)="onSubmit()" type="submit" class="btn btn-primary rounded-pill ">Search</button>
+</div>
+</form>
+</div>

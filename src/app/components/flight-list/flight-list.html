@@ -1,0 +1,41 @@
+
+@if(flights$ | async; as flights){
+   @if (flights.length > 0) {
+  <div class="d-flex justify-content-center align-items-center gap-3 mt-5 flex-wrap">
+    @for(flight of flights;track flight.flightId){
+    <div
+      class="card"
+      style="width: 18rem;"
+    >
+      <div class="card-body">
+        <h3>{{ flight.airline }}</h3>
+
+        <h5 class="text-muted">
+          {{ flight.origin }} → {{ flight.destination }}
+        </h5>
+
+        <p class="text-success border rounded">
+          {{ flight.price | currency:'INR'}}
+        </p>
+
+        <h6>
+          Arrival: {{ flight.arrivalTime | date:'dd MMM yyyy, hh:mm a' }}
+        </h6>
+
+        <h6>
+          Departure: {{ flight.departureTime | date:'dd MMM yyyy, hh:mm a' }}
+        </h6>
+
+        <button
+          class="btn btn-primary"
+          (click)="SendFlightId(flight)"
+        >
+          Book Ticket
+        </button>
+      </div>
+    </div>
+  }
+  </div>
+
+   }@else {<p class="text-center mt-5 text-muted" >No flights found</p>}
+}
