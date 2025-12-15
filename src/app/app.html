@@ -3,13 +3,34 @@
     ✈ FlightApp
   </a>
 
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav ms-auto align-items-center gap-3">
+  <ul class="navbar-nav ms-auto align-items-center gap-3">
+
+    <li class="nav-item">
+      <a class="nav-link nav-home" routerLink="/">Home</a>
+    </li>
+
+    <!-- WHEN USER IS LOGGED IN -->
+    <ng-container *ngIf="currentUser$ | async as user; else loggedOut">
 
       <li class="nav-item">
-        <a class="nav-link nav-home active" routerLink="/">Home</a>
+        <span class="nav-username">
+          👤 {{ user.username }}
+        </span>
       </li>
 
+      <li class="nav-item">
+        <button
+          class="btn btn-nav-outline"
+          type="button"
+          (click)="logout()">
+          Logout
+        </button>
+      </li>
+
+    </ng-container>
+
+    <!-- WHEN USER IS LOGGED OUT -->
+    <ng-template #loggedOut>
       <li class="nav-item">
         <a class="btn btn-nav-outline" routerLink="/signin">
           Sign in
@@ -21,9 +42,9 @@
           Sign up
         </a>
       </li>
+    </ng-template>
 
-    </ul>
-  </div>
+  </ul>
 </nav>
 
 <!-- ONLY ROUTED CONTENT HERE -->

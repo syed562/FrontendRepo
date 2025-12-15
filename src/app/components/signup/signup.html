@@ -1,54 +1,97 @@
-<div class="d-flex  justify-content-center align-items-center min-vh-100 w-100 ">
-<form class="card p-4 shadow-sm">
-  <div class="my-2">
-    <div class="my-2"><h3 class="text-center">Sign up</h3></div>
+<div class="auth-wrapper">
+  <form class="auth-card">
 
-  <div class="d-flex gap-2 flex-column " >
-    <div class="form-group"  >
-    <label class="my-1" for="exampleInputUsername">Username</label>
-    <input [(ngModel)]="userDetails.username" name="username" class="form-control" id="exampleInputUsername" placeholder="Enter your username" >
-  </div>
-  <div class="form-group">
-    <label class="my-1" for="exampleInputEmail1">Email address</label>
-    <input [(ngModel)]="userDetails.email" name="email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-    placeholder="Enter your email address">
-  </div>
-  <div class="form-group">
-    <label class="my-1" for="exampleInputPassword1">Password</label>
-    <input [(ngModel)]="userDetails.password" name="password" type="password" class="form-control" id="exampleInputPassword1"
-    placeholder="Enter your password">
-  </div>
-   </div>
-  <div class="dropdown">
-<button
-  class="btn btn-sm btn-secondary dropdown-toggle my-3"
-  type="button"
-  id="dropdownMenuButton"
-  data-bs-toggle="dropdown"
-  aria-expanded="false">
-  Select your role
-</button>  
+    <!-- Logo -->
+    <div class="auth-logo">
+      ✈
+    </div>
 
+    <h2>Create account</h2>
+    <p class="auth-subtitle">
+      Join FlightApp and start booking smarter
+    </p>
 
-  
-   <ul class="dropdown-menu">
-    <li>
-      <button  type="button" class="dropdown-item" (click)="selectRole(UserRole.ROLE_USER)">
-        User
+    <div class="d-flex gap-3 flex-column">
+
+      <!-- Username -->
+      <div class="form-group">
+        <label class="form-label">Username</label>
+        <input
+          [(ngModel)]="userDetails.username"
+          name="username"
+          class="form-control"
+          placeholder="Enter your username"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label">Email address</label>
+        <input
+          [(ngModel)]="userDetails.email"
+          name="email"
+          type="email"
+          class="form-control"
+          placeholder="Enter your email address"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input
+          [(ngModel)]="userDetails.password"
+          name="password"
+          type="password"
+          class="form-control"
+          placeholder="Enter your password"
+        />
+      </div>
+
+      <!-- Role dropdown -->
+      <div class="dropdown text-center">
+        <button
+          class="btn btn-outline-secondary dropdown-toggle auth-role-btn"
+          type="button"
+          data-bs-toggle="dropdown">
+          Select your role
+        </button>
+
+        <ul class="dropdown-menu w-100">
+          <li>
+            <button
+              type="button"
+              class="dropdown-item"
+              (click)="selectRole(UserRole.ROLE_USER)">
+              User
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="dropdown-item"
+              (click)="selectRole(UserRole.ROLE_ADMIN)">
+              Admin
+            </button>
+          </li>
+        </ul>
+
+        <div class="mt-2">
+          <span class="badge auth-role-badge">
+            {{ selectedRole }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button
+        (click)="submit()"
+        type="submit"
+        class="btn btn-primary auth-btn">
+        Create account
       </button>
-    </li>
-    <li>
-      <button  type="button" class="dropdown-item" (click)="selectRole(UserRole.ROLE_ADMIN)">
-        Admin
-      </button>
-    </li>
-    
-  </ul>
-  <span class="badge bg-secondary mx-3 ">{{selectedRole}}</span>
 
-</div>
-</div>
+    </div>
 
-  <button (click)="submit()" type="submit" class="btn btn-primary my-2 ">Submit</button>
-</form>
+  </form>
 </div>
