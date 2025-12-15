@@ -5,43 +5,42 @@
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ms-auto align-items-center gap-3">
-
       <li class="nav-item">
-        <a class="nav-link fw-semibold" routerLink="/">Home</a>
+        <a class="nav-link" routerLink="/">Home</a>
       </li>
-
-      @if (currentUser$ | async; as user) {
-
-        <li class="nav-item">
-          <span class="user-pill">
-            👤 {{ user.username }}
-          </span>
-        </li>
-
-        <li class="nav-item">
-          <button class="btn btn-outline-light btn-sm" (click)="logout()">
-            Logout
-          </button>
-        </li>
-
-      } @else {
-
-        <li class="nav-item">
-          <a class="btn btn-outline-light btn-sm" routerLink="/signin">
-            Sign in
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="btn btn-warning btn-sm px-3" routerLink="/signup">
-            Sign up
-          </a>
-        </li>
-
-      }
-
+      <li class="nav-item">
+        <a class="btn btn-outline-light btn-sm" routerLink="/signin">Sign in</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-warning btn-sm px-3" routerLink="/signup">Sign up</a>
+      </li>
     </ul>
   </div>
 </nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1>Book Flights Instantly</h1>
+    <p>Search and compare the best flight deals worldwide</p>
+
+    <!-- Your existing search card -->
+    <div class="search-card">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="Enter origin" />
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="Enter destination" />
+        </div>
+        <div class="col-md-4 d-grid">
+          <button class="btn btn-primary btn-lg">Search Flights</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <router-outlet></router-outlet>

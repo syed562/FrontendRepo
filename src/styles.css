@@ -15,35 +15,32 @@ html, body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background: linear-gradient(90deg, #0b5ed7, #084298) !important;
+  background: linear-gradient(90deg, #4a011b, #3e0018) !important;
 }
 
+
 .navbar .navbar-brand {
-  color: #ffffff !important;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  color: #f9fafb !important;
 }
 
 .navbar .nav-link {
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-weight: 500;
+  color: #e5e7eb !important;
 }
 
 .navbar .nav-link:hover {
   color: #ffffff !important;
 }
 
+
 /* ===== BUTTONS ===== */
 .btn-primary {
-  background-color: #ff7a18 !important;
-  border-color: #ff7a18 !important;
-  color: #ffffff;
-  font-weight: 500;
+  background: linear-gradient(135deg, #ff8a00, #ff6a00) !important;
+  border: none !important;
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background-color: #e66900 !important;
-  border-color: #e66900 !important;
+  background: linear-gradient(135deg, #ff6a00, #e85d00) !important;
 }
 
 .btn-secondary {
@@ -104,13 +101,60 @@ a:hover {
 
 /* ===== SEARCH CARD (OPTIONAL USE) ===== */
 .search-card {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
+
 
 /* ===== UTIL ===== */
 .shadow-soft {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  background-image: url("https://media.istockphoto.com/id/530089923/photo/landing-airplane.jpg?s=612x612&w=0&k=20&c=ks059n7nWlTRn-TlYQT3ONTVQiMUoeWXmLoq2Qp1wU4=");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.85),
+    rgba(2, 6, 23, 0.55),
+    rgba(2, 6, 23, 0.85)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #f9fafb;
+  letter-spacing: 0.5px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #d1d5db;
 }
