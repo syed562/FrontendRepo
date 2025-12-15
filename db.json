@@ -1,0 +1,24 @@
+{
+  "tickets": [
+    {
+      "id": 1,
+      "name": "asritha",
+      "email": "asritha@example.com",
+      "origin": "Goa",
+      "destination": "Chennai",
+      "pnr": "e3ca3fe6",
+      "departureTime": "2025-12-30T10:30:00",
+      "arrivalTime": "2025-12-31T12:00:00"
+    },
+    {
+      "id": 2,
+      "name": "asritha",
+      "email": "asritha@example.com",
+      "origin": "Goa",
+      "destination": "Chennai",
+      "pnr": "17d08959",
+      "departureTime": "2025-12-30T10:30:00",
+      "arrivalTime": "2025-12-31T12:00:00"
+    }
+  ]
+}
