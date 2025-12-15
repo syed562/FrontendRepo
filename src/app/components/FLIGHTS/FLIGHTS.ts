@@ -14,8 +14,8 @@ import { PassengerService } from '../../services/passenger-service';
   selector: 'app-flight-list',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './flight-list.html',
-  styleUrl: './flight-list.css',
+  templateUrl: './flights.html',
+  styleUrl: './flights.css',
 })
 export class FlightList implements OnInit {
 

@@ -4,6 +4,6 @@ export interface Flight {
   origin: string;
   destination: string;
   price: number;
-  departureTime: string; // ISO datetime
-  arrivalTime: string;   // ISO datetime
+  departureTime: string; 
+  arrivalTime: string;   
 }

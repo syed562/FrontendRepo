@@ -1,9 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { userDetails } from '../../models/userDetails';
-import { UserRole } from '../../enums/user-role.enum';
+import { UserRole } from '../../ROLE/user-role.enum';
 import { FormsModule } from "@angular/forms";
 import { AuthService } from '../../services/auth-service';
 import { Router } from '@angular/router';
+
+
+@NgModule({
+  imports: [
+    FormsModule
+  ]
+})
+export class SignupModule {}
+
 @Component({
   selector: 'app-signup',
   imports: [FormsModule],

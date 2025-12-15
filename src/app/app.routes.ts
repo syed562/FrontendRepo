@@ -4,7 +4,7 @@ import { LoggedinPage } from './components/loggedin-page/loggedin-page';
 import { App } from './app';
 import { Signup } from './components/signup/signup';
 import { Signin } from './components/signin/signin';
-import { FlightList } from './components/flight-list/flight-list';
+import { FlightList } from './components/FLIGHTS/FLIGHTS';
 import { authGuard } from './gaurds/auth.gaurd';
 import { adminGuard } from './gaurds/admin.gaurd';
 import { TicketBooking } from './components/ticket-booking/ticket-booking';

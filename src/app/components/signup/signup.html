@@ -1,10 +1,8 @@
 <div class="auth-wrapper">
-  <form class="auth-card">
+  <form class="auth-card" novalidate>
 
     <!-- Logo -->
-    <div class="auth-logo">
-      ✈
-    </div>
+    <div class="auth-logo">✈</div>
 
     <h2>Create account</h2>
     <p class="auth-subtitle">
@@ -21,7 +19,19 @@
           name="username"
           class="form-control"
           placeholder="Enter your username"
+          required
+          minlength="3"
+          pattern="^[a-zA-Z0-9]+$"
+          #username="ngModel"
         />
+
+        <small class="text-danger" *ngIf="username.touched && username.invalid">
+          <span *ngIf="username.errors?.required">Username is required</span>
+          <span *ngIf="username.errors?.minlength">Min 3 characters</span>
+          <span *ngIf="username.errors?.pattern">
+            Only letters & numbers allowed
+          </span>
+        </small>
       </div>
 
       <!-- Email -->
@@ -33,7 +43,15 @@
           type="email"
           class="form-control"
           placeholder="Enter your email address"
+          required
+          email
+          #email="ngModel"
         />
+
+        <small class="text-danger" *ngIf="email.touched && email.invalid">
+          <span *ngIf="email.errors?.required">Email is required</span>
+          <span *ngIf="email.errors?.email">Invalid email format</span>
+        </small>
       </div>
 
       <!-- Password -->
@@ -45,7 +63,19 @@
           type="password"
           class="form-control"
           placeholder="Enter your password"
+          required
+          minlength="6"
+          pattern="^(?=.*[0-9])(?=.*[!@#$%^&*]).+$"
+          #password="ngModel"
         />
+
+        <small class="text-danger" *ngIf="password.touched && password.invalid">
+          <span *ngIf="password.errors?.required">Password is required</span>
+          <span *ngIf="password.errors?.minlength">Min 6 characters</span>
+          <span *ngIf="password.errors?.pattern">
+            Must include number & special character
+          </span>
+        </small>
       </div>
 
       <!-- Role dropdown -->
@@ -78,20 +108,29 @@
 
         <div class="mt-2">
           <span class="badge auth-role-badge">
-            {{ selectedRole }}
+            {{ selectedRole || 'No role selected' }}
           </span>
         </div>
+
+        <small class="text-danger" *ngIf="!selectedRole">
+          Role is required
+        </small>
       </div>
 
       <!-- Submit -->
       <button
-        (click)="submit()"
         type="submit"
-        class="btn btn-primary auth-btn">
+        class="btn btn-primary auth-btn"
+        (click)="submit()"
+        [disabled]="
+          !userDetails.username ||
+          !userDetails.email ||
+          !userDetails.password ||
+          !selectedRole
+        ">
         Create account
       </button>
 
     </div>
-
   </form>
 </div>
