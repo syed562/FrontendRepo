@@ -1,7 +1,6 @@
 <div class="auth-wrapper">
-  <form class="auth-card" (ngSubmit)="submit()">
+  <form class="auth-card" (ngSubmit)="submit()" #loginForm="ngForm">
 
-    <!-- Logo -->
     <div class="auth-logo">
       ✈
     </div>
@@ -11,7 +10,6 @@
       Sign in to continue your journey
     </p>
 
-    <!-- Username -->
     <div class="form-group mb-3">
       <label class="form-label">Username</label>
       <input
@@ -19,10 +17,20 @@
         [(ngModel)]="user.username"
         name="username"
         class="form-control"
+        required
+        minlength="3"
+        #username="ngModel"
       />
+
+      <small class="text-danger" *ngIf="username.touched && username.errors?.['required']">
+        Username is required
+      </small>
+      <small class="text-danger" *ngIf="username.touched && username.errors?.['minlength']">
+        Username must be at least 3 characters
+      </small>
     </div>
 
-    <!-- Password -->
+    
     <div class="form-group mb-4">
       <label class="form-label">Password</label>
       <input
@@ -31,11 +39,24 @@
         name="password"
         type="password"
         class="form-control"
+        required
+        minlength="6"
+        #password="ngModel"
       />
+
+      <small class="text-danger" *ngIf="password.touched && password.errors?.['required']">
+        Password is required
+      </small>
+      <small class="text-danger" *ngIf="password.touched && password.errors?.['minlength']">
+        Password must be at least 6 characters
+      </small>
     </div>
 
-    <!-- Submit -->
-    <button type="submit" class="btn btn-primary auth-btn w-100">
+
+    <button
+      type="submit"
+      class="btn btn-primary auth-btn w-100"
+      [disabled]="loginForm.invalid">
       Sign in
     </button>
 

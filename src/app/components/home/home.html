@@ -1,41 +1,15 @@
-
-<section class="hero">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1>Book Flights Instantly</h1>
-    <p>Search and compare the best flight deals worldwide</p>
-
-    <div class="search-card">
-      <div class="row g-3 align-items-center">
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="Enter origin" />
-        </div>
-        <div class="col-md-4">
-          <input type="text" class="form-control" placeholder="Enter destination" />
-        </div>
-        <div class="col-md-4 d-grid">
-          <button class="btn btn-primary btn-lg">
-            Search Flights
-            
-          </button>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <div class="d-flex justify-content-center align-items-center my-3 w-100">
 
   <form
     class="card p-4 shadow-sm w-80 rounded-pill"
-    (ngSubmit)="onSubmit()">
+    (ngSubmit)="onSubmit()"
+    #searchForm="ngForm">
 
     <div class="d-flex gap-3 flex-row justify-content-between align-items-center">
 
       <h4 class="mb-0">Search flights</h4>
 
+      <!-- Origin -->
       <div class="form-group d-flex align-items-center">
         <label class="mx-2" for="originId">Origin</label>
         <input
@@ -43,9 +17,12 @@
           placeholder="Enter origin"
           [(ngModel)]="req.origin"
           name="origin"
-          class="form-control form-control-sm py-1">
+          class="form-control form-control-sm py-1"
+          required
+          #origin="ngModel">
       </div>
 
+      <!-- Destination -->
       <div class="form-group d-flex align-items-center">
         <label class="mx-2" for="destinationId">Destination</label>
         <input
@@ -53,17 +30,34 @@
           placeholder="Enter destination"
           [(ngModel)]="req.destination"
           name="destination"
-          class="form-control form-control-sm py-1">
+          class="form-control form-control-sm py-1"
+          required
+          #destination="ngModel">
       </div>
-       
+
+      <!-- Search Button -->
       <button
         type="submit"
-        class="btn btn-primary rounded-pill">
+        class="btn btn-primary rounded-pill"
+        [disabled]="
+          searchForm.invalid ||
+          (req.origin && req.destination && req.origin === req.destination)
+        ">
         Search
       </button>
 
     </div>
 
+    <!-- Validation message -->
+    <div
+      class="text-danger text-center mt-2"
+      *ngIf="
+        origin.touched &&
+        destination.touched &&
+        req.origin === req.destination
+      ">
+      Origin and Destination cannot be the same
+    </div>
+
   </form>
 </div>
-
