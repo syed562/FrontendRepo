@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
 
 import { FlightService } from '../../services/flight-service';
-import { Flight } from '../../models/Flight';
-import { searchReq } from '../../models/searchReq';
+import { Flight } from '../../ENTITIES/Flight';
+import { searchReq } from '../../ENTITIES/searchReq';
 import { AuthService } from '../../services/auth-service';
 import { PassengerService } from '../../services/passenger-service';
 

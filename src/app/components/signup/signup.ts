@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { userDetails } from '../../models/userDetails';
+import { userDetails } from '../../ENTITIES/userDetails';
 import { UserRole } from '../../ROLE/user-role.enum';
 import { FormsModule } from "@angular/forms";
 import { AuthService } from '../../services/auth-service';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { user } from '../../models/user';
+import { user } from '../../ENTITIES/user';
 import { AuthService } from '../../services/auth-service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';

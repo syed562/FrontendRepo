@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { searchReq } from '../../models/searchReq';
+import { searchReq } from '../../ENTITIES/searchReq';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',

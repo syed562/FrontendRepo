@@ -10,7 +10,7 @@ import {
 } from 'rxjs';
 
 import { TicketService } from '../../services/ticket-service';
-import { Ticket } from '../../models/Ticket';
+import { Ticket } from '../../ENTITIES/Ticket';
 import { AuthService } from '../../services/auth-service';
 
 @Component({

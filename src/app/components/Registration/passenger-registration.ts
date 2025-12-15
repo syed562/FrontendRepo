@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PassengerService } from '../../services/passenger-service';
-import { Profile } from '../../models/Profile';
+import { Profile } from '../../ENTITIES/Profile';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-passenger-registration',
