@@ -16,6 +16,8 @@ export class Home {
   destination: ''
 };
 onSubmit() {
+  console.log('SEARCH CLICKED', this.req);
+
   this.router.navigate(['/flights'], {
     state:{
       searchData:{

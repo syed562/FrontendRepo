@@ -1,36 +1,60 @@
-<p>ticket-booking works!</p>
-<div class="d-flex justify-content-center align-items-center">
-<form>
-  <div class="form-group">
-    <label for="seatNo">SeatNo</label>
-    <input [(ngModel)]="seatNo" name="seatNo"
-      type="text"
-      class="form-control"
-      id="seatNo"
-      placeholder="Enter seatNO">
+<div class="ticket-page">
+
+  <!-- BOOK TICKET CARD -->
+  <div class="ticket-card">
+    <h3 class="card-title">🎟 Book Your Seat</h3>
+
+    <form class="mt-3">
+      <div class="form-group mb-3">
+        <label for="seatNo" class="form-label">Seat Number</label>
+        <input
+          [(ngModel)]="seatNo"
+          name="seatNo"
+          type="text"
+          class="form-control"
+          id="seatNo"
+          placeholder="Eg: 12A">
+      </div>
+
+      <button
+        (click)="bookTicket()"
+        type="submit"
+        class="btn btn-primary w-100">
+        Book Ticket
+      </button>
+    </form>
   </div>
 
-  <button (click)=" bookTicket()" type="submit" class="btn btn-primary my-2">Book</button>
-</form>
-</div>
-<p>ticket-booking works!</p>
+  <!-- TICKETS LIST -->
+  @if(tickets$ | async; as tickets){
 
-@if(tickets$ | async; as tickets){
-<ul class="list-group" >
-  @for(ticket of tickets;track ticket.id){
-  <li class="list-group-item" >
-    <b>{{ ticket.origin }} → {{ ticket.destination }}</b><br />
-    PNR: {{ ticket.pnr }}<br />
-    {{ ticket.departureTime }} - {{ ticket.arrivalTime }}
-  </li>
-}
+    <div class="tickets-section">
 
+      <h4 class="section-title">✈ Your Tickets</h4>
 
- 
-  @if(tickets.length===0){
- <li class="list-group-item text-muted" >
-    No tickets found
-  </li>
+      @if(tickets.length > 0){
+        <div class="ticket-list">
+          @for(ticket of tickets; track ticket.id){
+            <div class="ticket-item">
+              <div class="ticket-route">
+                {{ ticket.origin }} → {{ ticket.destination }}
+              </div>
+
+              <div class="ticket-meta">
+                <span><b>PNR:</b> {{ ticket.pnr }}</span>
+                <span>{{ ticket.departureTime }} – {{ ticket.arrivalTime }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if(tickets.length === 0){
+        <div class="empty-state">
+          No tickets found
+        </div>
+      }
+
+    </div>
   }
-</ul>
-}
+</div>

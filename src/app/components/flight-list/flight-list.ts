@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { take, switchMap } from 'rxjs/operators';
 
 import { FlightService } from '../../services/flight-service';
 import { Flight } from '../../models/Flight';
 import { searchReq } from '../../models/searchReq';
 import { AuthService } from '../../services/auth-service';
 import { PassengerService } from '../../services/passenger-service';
-import { take, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-flight-list',
@@ -20,44 +20,43 @@ import { take, switchMap } from 'rxjs/operators';
 export class FlightList implements OnInit {
 
   flights$!: Observable<Flight[]>;
-
   searchData!: searchReq;
 
   constructor(
     private readonly flightService: FlightService,
     private readonly router: Router,
+    private readonly route: ActivatedRoute,
     private readonly authService: AuthService,
     private readonly passengerService: PassengerService
   ) {}
 
   ngOnInit(): void {
-    const state = history.state;
+  const state = history.state as { searchData?: searchReq };
 
-    if (!state?.searchData) {
-      this.router.navigate(['/']);
-      return;
-    }
-
-    this.searchData = state.searchData;
-
-    
-    this.flights$ = this.flightService.getFlightByOriginAndDestination(
-      this.searchData
-    );
+  if (!state?.searchData) {
+    console.warn('No search data found, redirecting home');
+    this.router.navigate(['/']);
+    return;
   }
 
-  SendFlightId(flight: Flight) {
-      console.log('CLICK HANDLER FIRED');
-    console.log('Clicked flight object:', flight);
-    let flightId = flight.flightId;
-    console.log(flightId);
+  this.searchData = state.searchData;
+
+  this.flights$ = this.flightService.getFlightByOriginAndDestination(
+    this.searchData
+  );
+}
+
+
+  SendFlightId(flight: Flight): void {
+    const flightId = flight.flightId;
+
     this.authService.currentUser
       .pipe(
         take(1),
         switchMap(user => {
           if (!user?.email) {
             this.router.navigate(['/signin']);
-            throw new Error('No user');
+            throw new Error('User not logged in');
           }
           return this.passengerService.getPassengerByEmail(user.email);
         })
@@ -72,7 +71,7 @@ export class FlightList implements OnInit {
           if (err.status === 404) {
             this.router.navigate(['/register']);
           } else {
-            console.error(err);
+            console.error('Booking error:', err);
           }
         }
       });
