@@ -100,13 +100,40 @@ a:hover {
 }
 
 /* ===== SEARCH CARD (OPTIONAL USE) ===== */
+/* ===== HERO SEARCH BAR – REFINED ===== */
+
 .search-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(6px);
-  padding: 28px;
-  border-radius: 22px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.96);
+  padding: 20px 22px;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  max-width: 720px;
+  margin: 0 auto;
 }
+
+/* Inputs */
+.search-card .form-control {
+  height: 44px;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+}
+
+.search-card .form-control::placeholder {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* Search button */
+.search-card .btn-primary {
+  height: 44px;
+  font-size: 14px;
+  padding: 0 26px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
 
 
 /* ===== UTIL ===== */
@@ -246,4 +273,18 @@ a:hover {
 .btn-nav-cta:hover {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   transform: translateY(-1px);
+}
+@media (max-width: 768px) {
+  .btn-nav-outline,
+  .btn-nav-cta {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+}
+.hero-content h1 {
+  font-size: 46px;
+}
+
+.hero-content p {
+  font-size: 16px;
 }
