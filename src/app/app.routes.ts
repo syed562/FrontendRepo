@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
 import {Home} from './components/home/home';
-import { LoggedinPage } from './components/loggedin-page/loggedin-page';
+import { LoggedinPage } from './components/PAGE_LOGIN/loggedin-page';
 import { App } from './app';
 import { Signup } from './components/signup/signup';
 import { Signin } from './components/signin/signin';
-import { FlightList } from './components/FLIGHTS/FLIGHTS';
+import { FlightList } from './components/FLIGHT/FLIGHTS';
 import { authGuard } from './GUARDS/auth.gaurd';
 import { adminGuard } from './GUARDS/admin.gaurd';
 import { TicketBooking } from './components/Booking_Ticket/ticket-booking';
 import { userOrAdminGuard } from './GUARDS/USERADMIN';
-import { PassengerRegistration } from './components/passenger-registration/passenger-registration';
+import { PassengerRegistration } from './components/Registration/passenger-registration';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'signup',component:Signup},
