@@ -5,10 +5,10 @@ import { App } from './app';
 import { Signup } from './components/signup/signup';
 import { Signin } from './components/signin/signin';
 import { FlightList } from './components/FLIGHTS/FLIGHTS';
-import { authGuard } from './gaurds/auth.gaurd';
-import { adminGuard } from './gaurds/admin.gaurd';
-import { TicketBooking } from './components/ticket-booking/ticket-booking';
-import { userOrAdminGuard } from './gaurds/userOrAdminGuard';
+import { authGuard } from './GUARDS/auth.gaurd';
+import { adminGuard } from './GUARDS/admin.gaurd';
+import { TicketBooking } from './components/Booking_Ticket/ticket-booking';
+import { userOrAdminGuard } from './GUARDS/USERADMIN';
 import { PassengerRegistration } from './components/passenger-registration/passenger-registration';
 export const routes: Routes = [
     {path:'',component:Home},

@@ -12,6 +12,6 @@ export const adminGuard: CanActivateFn = () => {
       if (u?.roles?.includes(UserRole.ROLE_ADMIN)) return true;
       router.navigate(['/signin']);
       return false;
-    }) //we define pipe but wont call subscribe angular router subscribes internally
+    }) 
   );
 };
