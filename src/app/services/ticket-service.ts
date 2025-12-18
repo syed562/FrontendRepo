@@ -7,6 +7,9 @@ import { Ticket } from '../ENTITIES/Ticket';
   providedIn: 'root',
 })
 export class TicketService {
+  bookMultipleTickets(flightId: number, passengerId: number, seats: string[]) {
+    throw new Error('Method not implemented.');
+  }
 
 
   constructor(private http: HttpClient) {}

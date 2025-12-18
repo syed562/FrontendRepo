@@ -4,25 +4,40 @@
   <div class="ticket-card">
     <h3 class="card-title">🎟 Book Your Seat</h3>
 
-    <form class="mt-3">
-      <div class="form-group mb-3">
-        <label for="seatNo" class="form-label">Seat Number</label>
-        <input
-          [(ngModel)]="seatNo"
-          name="seatNo"
-          type="text"
-          class="form-control"
-          id="seatNo"
-          placeholder="Eg: 12A">
-      </div>
+ <form class="mt-3">
 
-      <button
-        (click)="bookTicket()"
-        type="submit"
-        class="btn btn-primary w-100">
-        Book Ticket
-      </button>
-    </form>
+  @for (p of passengers; track p; let i = $index) {
+
+    <div class="form-group mb-3">
+      <label class="form-label">
+        Seat Number (Passenger {{ i + 1 }})
+      </label>
+
+      <input
+        [(ngModel)]="p.seatNo"
+        name="seat{{i}}"
+        type="text"
+        class="form-control"
+        placeholder="Eg: 12A">
+    </div>
+  }
+
+  <button
+    type="button"
+    class="btn btn-outline-secondary w-100 mb-2"
+    (click)="addPassenger()">
+    ➕ Add Passenger
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-primary w-100"
+    (click)="bookTickets()">
+    Book Tickets
+  </button>
+
+</form>
+
   </div>
 
   <!-- TICKETS LIST -->
