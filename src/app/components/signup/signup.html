@@ -1,5 +1,5 @@
 <div class="auth-wrapper">
-  <form class="auth-card" novalidate>
+  <form class="auth-card" novalidate (ngSubmit)="submit()">
 
    
     <div class="auth-logo">✈</div>
@@ -127,7 +127,7 @@
       <button
         type="submit"
         class="btn btn-primary auth-btn"
-        (click)="submit()"
+        
         [disabled]="
           !userDetails.username ||
           !userDetails.email ||

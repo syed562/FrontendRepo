@@ -6,12 +6,7 @@ import { AuthService } from '../../services/auth-service';
 import { Router } from '@angular/router';
 
 
-@NgModule({
-  imports: [
-    FormsModule
-  ]
-})
-export class SignupModule {}
+
 
 @Component({
   selector: 'app-signup',
@@ -47,29 +42,29 @@ export class Signup {
     this.selectedRole="User";
   }
 }
-submit(){
-    this.successMessage = '';
-    this.errorMessage = '';
+submit() {
+  this.successMessage = '';
+  this.errorMessage = '';
+
   this.auth.signup(this.userDetails).subscribe({
+
+    next: () => {
+     console.log("success of sign up")
+      this.successMessage = 'Signup successful! Redirecting to login...';
+
     
-      next:()=> {
-        
-           this.successMessage = ' Signup successful! Redirecting to login...';
-        console.log('Signup successful');
+      setTimeout(() => {
         this.router.navigate(['/signin']);
+      }, 2000);
+    },
 
-      }
-
-    ,
-    
- error:(error)=>{ 
-    this.errorMessage =
-          error?.error?.message || 'Signup failed. Please try again.';
-  console.error('Sign up failed:',error.message);
+    error: (error) => {
+      this.errorMessage =
+        error?.error?.message || 'Signup failed. Please try again.';
     }
+  });
 }
-  );
-}
+
 
 
 }
