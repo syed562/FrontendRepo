@@ -105,6 +105,10 @@ export class TicketBooking implements OnInit {
   tickets$!: Observable<Ticket[]>;
   private refresh$ = new Subject<void>();
 
+  errorMessage: string | null = null;
+successMessage: string | null = null;
+isBooking = false;
+
   flightId!: number;
   passengerId!: number;
 
@@ -156,8 +160,12 @@ seatNo: any;
   bookTickets() {
 
     if (!this.passengers || this.passengers.length === 0) {
+       this.errorMessage = 'Please add at least one passenger';
       return;
     }
+  this.errorMessage = null;
+  this.successMessage = null;
+  this.isBooking = true;
 
     from(this.passengers).pipe(
 
@@ -173,12 +181,19 @@ seatNo: any;
     ).subscribe({
 
       next: pnr => {
+          this.successMessage = `Ticket booked successfully (PNR: ${pnr})`;
         console.log('Booked PNR:', pnr);
       },
 
       error: err => {
-        console.error('Booking failed', err);
-      },
+      this.isBooking = false;
+
+     
+      this.errorMessage =
+        err?.error?.message ||
+        err?.error ||
+        'Seat already booked or booking failed';
+    },
 
       complete: () => {
         console.log('All tickets booked');

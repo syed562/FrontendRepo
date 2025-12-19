@@ -22,6 +22,13 @@ export class SignupModule {}
 })
 export class Signup {
   constructor(private readonly auth:AuthService,private readonly router:Router){}
+  successMessage = '';
+  errorMessage = '';
+  
+  
+  
+  
+  
   roleSelected:boolean=false;
   selectedRole:string="";
   UserRole = UserRole; 
@@ -41,16 +48,24 @@ export class Signup {
   }
 }
 submit(){
+    this.successMessage = '';
+    this.errorMessage = '';
   this.auth.signup(this.userDetails).subscribe({
     
-      next:()=> {console.log('Signup successful');
+      next:()=> {
+        
+           this.successMessage = ' Signup successful! Redirecting to login...';
+        console.log('Signup successful');
         this.router.navigate(['/signin']);
 
       }
 
     ,
     
- error:(error)=>{ console.error('Sign up failed:',error.message);
+ error:(error)=>{ 
+    this.errorMessage =
+          error?.error?.message || 'Signup failed. Please try again.';
+  console.error('Sign up failed:',error.message);
     }
 }
   );

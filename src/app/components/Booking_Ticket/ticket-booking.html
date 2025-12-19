@@ -22,6 +22,19 @@
     </div>
   }
 
+@if (errorMessage) {
+  <div class="alert alert-danger mt-2">
+    {{ errorMessage }}
+  </div>
+}
+
+
+@if (successMessage) {
+  <div class="alert alert-success mt-2">
+    {{ successMessage }}
+  </div>
+}
+
   <button
     type="button"
     class="btn btn-outline-secondary w-100 mb-2"

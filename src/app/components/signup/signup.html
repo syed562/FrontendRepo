@@ -8,7 +8,13 @@
     <p class="auth-subtitle">
       Join FlightApp and start booking smarter
     </p>
+     <div *ngIf="successMessage" class="alert alert-success text-center">
+      {{ successMessage }}
+    </div>
 
+     <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
     <div class="d-flex gap-3 flex-column">
 
     
