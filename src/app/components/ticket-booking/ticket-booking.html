@@ -1,0 +1,28 @@
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 flex-column">
+  <div class="d-flex justify-content-center  my-5 flex-column">
+    @if (ticketBookedMessage$ | async; as msg) {
+    <div class="alert alert-info text-center">
+      {{ msg }}
+    </div>
+  }
+  <h3>Book your ticket here</h3>
+    
+
+</div>
+<form class="card p-4" (ngSubmit)=" bookTicket()">
+  <div class="form-group">
+    <label for="seatNo">Number of seats</label>
+    <input [(ngModel)]="numberOfSeats" name="numberOfSeats"
+      type="text"
+      class="form-control"
+      id="seatNo"
+      placeholder="Enter number of seats">
+  </div>
+
+  <button  type="submit" class="btn btn-primary my-2">Book</button>
+</form>
+</div>
+
+
+<app-ticket-list (ticketCancelled)="onTicketCancelled()" [tickets]="tickets$ | async"></app-ticket-list>

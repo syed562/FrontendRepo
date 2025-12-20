@@ -1,0 +1,77 @@
+<div class="d-flex my-5 justify-content-center">
+  <h2 class="my-3">Register your profile here</h2>
+</div>
+
+<div class="d-flex justify-content-center align-items-center gap-3">
+<form class="card p-4"
+      [formGroup]="form"
+      (ngSubmit)="register()">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text"
+           class="form-control"
+           formControlName="name"
+           id="name"
+           placeholder="Enter name">
+  </div>
+
+  <!-- <div class="form-group">
+    <label>Email address</label>
+    <input type="email"
+           class="form-control"
+           formControlName="email"
+           placeholder="Enter email">
+  </div> -->
+
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number</label>
+    <div class="position-relative">
+    <input type="tel"
+           class="form-control"
+           formControlName="phoneNumber"
+           id="phoneNumber"
+           placeholder="Enter phone number">
+            <div class="position-absolute my-4">
+          
+          </div>
+          </div>
+  </div>
+
+  <div class="form-group">
+    <label for="houseNo">House No</label>
+    <input type="text"
+           class="form-control"
+           formControlName="houseNo"
+           id="houseNo"
+           placeholder="Enter house number">
+  </div>
+
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text"
+           class="form-control"
+           formControlName="city"
+           id="city"
+           placeholder="Enter city">
+  </div>
+
+  <div class="form-group">
+    <label for="state">State</label>
+    <input type="text"
+           class="form-control"
+           formControlName="state"
+           id="state"
+           placeholder="Enter state">
+  </div>
+
+  <button type="submit" [disabled]="form.invalid || isPassengerRegistered || checking" class="btn btn-primary my-2">
+    Register
+  </button>
+  @if (isPassengerRegistered) {
+  <small class="text-muted">
+    Passenger already registered
+  </small>
+}
+</form>
+</div>

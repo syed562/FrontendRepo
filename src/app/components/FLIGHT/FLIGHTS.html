@@ -1,41 +1,60 @@
+@if (flights$ | async; as flights) {
 
-@if(flights$ | async; as flights){
-   @if (flights.length > 0) {
-  <div class="d-flex justify-content-center align-items-center gap-3 mt-5 flex-wrap">
-    @for(flight of flights;track flight.flightId){
+  @if (flights.length > 0) {
+
     <div
-      class="card"
-      style="width: 18rem;"
-    >
-      <div class="card-body">
-        <h3>{{ flight.airline }}</h3>
+      class="d-flex justify-content-center align-items-center
+             gap-3 mt-5 flex-wrap w-100">
 
-        <h5 class="text-muted">
-          {{ flight.origin }} → {{ flight.destination }}
-        </h5>
+      @for (flight of flights; track flight.flightId) {
 
-        <p class="text-success border rounded">
-          {{ flight.price | currency:'INR'}}
-        </p>
+        <div class="card w-100">
+          <div
+            id="flight"
+            class="card-body m-3 rounded d-flex flex-row justify-content-between">
 
-        <h6>
-          Arrival: {{ flight.arrivalTime | date:'dd MMM yyyy, hh:mm a' }}
-        </h6>
+            <h5>{{ flight.airline }}</h5>
 
-        <h6>
-          Departure: {{ flight.departureTime | date:'dd MMM yyyy, hh:mm a' }}
-        </h6>
+            <h5 class="text-muted">
+              {{ flight.origin }} → {{ flight.destination }}
+            </h5>
 
-        <button
-          class="btn btn-primary"
-          (click)="SendFlightId(flight)"
-        >
-          Book Ticket
-        </button>
-      </div>
+            <span
+              id="price"
+              class="badge text-bg-success h-75 fs-6">
+              {{ flight.price | currency:'INR' }}
+            </span>
+
+            <h6>
+              Arrival: {{ flight.arrivalTime | date:'dd MMM yyyy, hh:mm a' }}
+            </h6>
+
+            <h6>
+              Departure: {{ flight.departureTime | date:'dd MMM yyyy, hh:mm a' }}
+            </h6>
+
+            <h6>
+              Available Seats: {{ flight. }}
+            </h6>
+
+            <button
+              class="btn btn-primary"
+              (click)="SendFlightId(flight)">
+              Book Ticket
+            </button>
+
+          </div>
+        </div>
+
+      }
+    </div>
+
+  } @else {
+    <div class="d-flex justify-content-center">
+      <p class="text-center mt-5 text-muted card w-50">
+        No flights found!!
+      </p>
     </div>
   }
-  </div>
 
-   }@else {<p class="text-center mt-5 text-muted" >No flights found</p>}
 }

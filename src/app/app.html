@@ -1,51 +1,65 @@
-<nav class="navbar navbar-expand-lg navbar-dark flight-navbar px-4 shadow-sm">
-  <a class="navbar-brand fw-bold fs-4" routerLink="/">
-    ✈ FlightApp
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 shadow-sm fixed-top">
+  <div class="d-flex gap-2 align-items-center justify-content-center">
+  <span class="material-symbols-outlined text-white">
+flight_takeoff
+</span>
+  <a class="navbar-brand fw-bold text-white" routerLink="/"> Asritha flights</a>
+  </div>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ms-auto align-items-center gap-3">
+
+     <li class="nav-item">
+  <a class="nav-link fw-semibold d-flex align-items-center gap-2" routerLink="/">
+    <span class="material-symbols-outlined">home</span>
+    <span>Home</span>
   </a>
+</li>
 
-  <ul class="navbar-nav ms-auto align-items-center gap-3">
 
-    <li class="nav-item">
-      <a class="nav-link nav-home" routerLink="/">Home</a>
-    </li>
+        @if (currentUser$ | async; as user) {
+          
+  <li class="nav-item">
+    <span class="badge bg-secondary fs-6 px-3 py-2">
+      Hi, {{ user.username }}
+    </span>
+  </li>
+  @if((user$ | async)=="admin"){
+            <li class="nav-item">
+    <button class="btn btn-primary" (click)="flightsAddPage()">
+      Flights Inventory
+    </button>
+  </li>
+          }
+  <li class="nav-item">
+    <button class="btn btn-primary" (click)="seeProfile()">
+      Profile
+    </button>
+  </li>
 
-    <!-- WHEN USER IS LOGGED IN -->
-    <ng-container *ngIf="currentUser$ | async as user; else loggedOut">
+ <li class="nav-item">
+    <button class="btn btn-primary" (click)="seeTickets()">
+      Tickets Booked
+    </button>
+  </li>
+  <li class="nav-item">
+    <button class="btn btn-danger" (click)="logout()">
+      Logout
+    </button>
+  </li>
+} @else {
+  <li class="nav-item">
+    <a class="btn btn-primary" routerLink="/signin">Sign in</a>
+  </li>
 
-      <li class="nav-item">
-        <span class="nav-username">
-          👤 {{ user.username }}
-        </span>
-      </li>
+  <li class="nav-item">
+    <a class="btn btn-primary" routerLink="/signup">Sign up</a>
+  </li>
+}
 
-      <li class="nav-item">
-        <button
-          class="btn btn-nav-outline"
-          type="button"
-          (click)="logout()">
-          Logout
-        </button>
-      </li>
 
-    </ng-container>
-
-    <!-- WHEN USER IS LOGGED OUT -->
-    <ng-template #loggedOut>
-      <li class="nav-item">
-        <a class="btn btn-nav-outline" routerLink="/signin">
-          Sign in
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="btn btn-nav-cta" routerLink="/signup">
-          Sign up
-        </a>
-      </li>
-    </ng-template>
-
-  </ul>
+    </ul>
+  </div>
 </nav>
 
-<!-- ONLY ROUTED CONTENT HERE -->
 <router-outlet></router-outlet>

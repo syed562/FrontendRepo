@@ -1,142 +1,109 @@
-<div class="auth-wrapper">
-  <form class="auth-card" novalidate (ngSubmit)="submit()">
 
-   
-    <div class="auth-logo">✈</div>
 
-    <h2>Create account</h2>
-    <p class="auth-subtitle">
-      Join FlightApp and start booking smarter
-    </p>
-     <div *ngIf="successMessage" class="alert alert-success text-center">
-      {{ successMessage }}
+<div class="d-flex justify-content-center align-items-center w-100 mt-5">
+@if (error$ | async; as error) {
+  <div class="alert alert-danger mb-2 my-3">
+   {{ error.replace('Error: ', '') }}
+  </div>
+}
+</div>
+<div class="d-flex  justify-content-center align-items-center min-vh-100 w-100 ">
+<form [formGroup]="form"  (ngSubmit)="submit()" class="card p-4 shadow-sm">
+  <div class="my-2">
+    <div class="my-2"><h3 class="text-center">Sign up</h3></div>
+
+  <div class="d-flex gap-3 flex-column " >
+    <div class="form-group position-relative"  >
+    <label class="my-1" for="exampleInputUsername">Username</label>
+    <input formControlName="username" class="form-control" id="exampleInputUsername" placeholder="Enter your username" >
+    <div class="position-absolute">
+    @if(form.get('username')?.invalid && form.get('username')?.dirty){
+      @if(form.get('username')?.errors?.['mustStartWithLetter']){
+    <small class="text-danger">*starting letter must be alphabet</small>
+   }
+       @if(form.get('username')?.errors?.['minLength']){
+    <small class="text-danger">*Minimum 5 characters</small>
+  }
+   @if(form.get('username')?.errors?.['noSpaces']){
+    <small class="text-danger">*Spaces not allowed</small>
+   }
+   @if(form.get('username')?.errors?.['invalidChars']){
+    <small class="text-danger">*Only letters, numbers, _ allowed</small>
+   }
+    }
     </div>
-
-     <div *ngIf="errorMessage" class="alert alert-danger text-center">
-      {{ errorMessage }}
+  </div>
+  <div class="form-group position-relative">
+    <label class="my-1" for="exampleInputEmail1">Email address</label>
+    <input formControlName="email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+    placeholder="Enter your email address">
+    <div class="position-absolute">
+    @if(form.get('email')?.invalid && form.get('email')?.dirty){
+      @if(form.get('email')?.errors?.['email']){
+<small class="text-danger">*Not valid email</small>
+      }
+    }
     </div>
-    <div class="d-flex gap-3 flex-column">
+  </div>
+  <div class="form-group position-relative">
+    <label class="my-1" for="exampleInputPassword1">Password</label>
+    <input formControlName="password"  type="password" class="form-control" id="exampleInputPassword1"
+    placeholder="Enter your password">
+    <div class="position-absolute">
+    @if(form.get('password')?.invalid && form.get('password')?.dirty){
+     @if(form.get('password')?.errors?.['minLength']){
+       <small class="text-danger">*Minimum 6 characters</small>
+     }@if(form.get('password')?.errors?.['noSpaces']){
+       <small class="text-danger">*Spaces not allowed</small>
+     }
+}
+</div>
+  </div>
+   </div>
+  <div class="dropdown">
+<button 
+  class="btn btn-sm btn-secondary dropdown-toggle my-3 mt-4"
+  type="button"
+  id="dropdownMenuButton"
+  data-bs-toggle="dropdown"
+  aria-expanded="false">
+  Select your role
+</button>  
 
-    
-      <div class="form-group">
-        <label class="form-label">Username</label>
-        <input
-          [(ngModel)]="userDetails.username"
-          name="username"
-          class="form-control"
-          placeholder="Enter your username"
-          required
-          minlength="3"
-          pattern="^[a-zA-Z0-9]+$"
-          #username="ngModel"
-        />
-
-        <small class="text-danger" *ngIf="username.touched && username.invalid">
-          <span *ngIf="username.errors?.required">Username is required</span>
-          <span *ngIf="username.errors?.minlength">Min 3 characters</span>
-          <span *ngIf="username.errors?.pattern">
-            Only letters & numbers allowed
-          </span>
-        </small>
-      </div>
-
-      
-      <div class="form-group">
-        <label class="form-label">Email address</label>
-        <input
-          [(ngModel)]="userDetails.email"
-          name="email"
-          type="email"
-          class="form-control"
-          placeholder="Enter your email address"
-          required
-          email
-          #email="ngModel"
-        />
-
-        <small class="text-danger" *ngIf="email.touched && email.invalid">
-          <span *ngIf="email.errors?.required">Email is required</span>
-          <span *ngIf="email.errors?.email">Invalid email format</span>
-        </small>
-      </div>
-
-   
-      <div class="form-group">
-        <label class="form-label">Password</label>
-        <input
-          [(ngModel)]="userDetails.password"
-          name="password"
-          type="password"
-          class="form-control"
-          placeholder="Enter your password"
-          required
-          minlength="6"
-          pattern="^(?=.*[0-9])(?=.*[!@#$%^&*]).+$"
-          #password="ngModel"
-        />
-
-        <small class="text-danger" *ngIf="password.touched && password.invalid">
-          <span *ngIf="password.errors?.required">Password is required</span>
-          <span *ngIf="password.errors?.minlength">Min 6 characters</span>
-          <span *ngIf="password.errors?.pattern">
-            Must include number & special character
-          </span>
-        </small>
-      </div>
-
-      
-      <div class="dropdown text-center">
-        <button
-          class="btn btn-outline-secondary dropdown-toggle auth-role-btn"
-          type="button"
-          data-bs-toggle="dropdown">
-          Select your role
-        </button>
-
-        <ul class="dropdown-menu w-100">
-          <li>
-            <button
-              type="button"
-              class="dropdown-item"
-              (click)="selectRole(UserRole.ROLE_USER)">
-              User
-            </button>
-          </li>
-          <li>
-            <button
-              type="button"
-              class="dropdown-item"
-              (click)="selectRole(UserRole.ROLE_ADMIN)">
-              Admin
-            </button>
-          </li>
-        </ul>
-
-        <div class="mt-2">
-          <span class="badge auth-role-badge">
-            {{ selectedRole || 'No role selected' }}
-          </span>
-        </div>
-
-        <small class="text-danger" *ngIf="!selectedRole">
-          Role is required
-        </small>
-      </div>
 
   
-      <button
-        type="submit"
-        class="btn btn-primary auth-btn"
-        
-        [disabled]="
-          !userDetails.username ||
-          !userDetails.email ||
-          !userDetails.password ||
-          !selectedRole
-        ">
-        Create account
+   <ul class="dropdown-menu">
+    <li>
+      <button  type="button" class="dropdown-item" (click)="selectRole(UserRole.ROLE_USER)">
+        User
       </button>
+    </li>
+    <li>
+      <button  type="button" class="dropdown-item" (click)="selectRole(UserRole.ROLE_ADMIN)">
+        Admin
+      </button>
+    </li>
+    
+  </ul>
+  @if(isroleSelected){
+  <span class="badge bg-secondary mx-3 ">{{selectedRole}}</span>
+  }@else{
+    <span class="badge bg-secondary mx-3 ">User</span>
+  }
 
-    </div>
-  </form>
+</div>
+</div>
+
+  <button  [disabled]="form.invalid" type="submit" class="btn btn-primary my-2 ">Submit</button>
+  <div class="text-center mt-3">
+  <span class="text-muted">Already have an account?</span>
+  <a
+    routerLink="/signin"
+    class="ms-1 fw-semibold text-decoration-none"
+  >
+    Sign in
+  </a>
+</div>
+
+</form>
 </div>

@@ -1,23 +1,25 @@
 import { Routes } from '@angular/router';
 import {Home} from './components/home/home';
-import { LoggedinPage } from './components/PAGE_LOGIN/loggedin-page';
 import { App } from './app';
 import { Signup } from './components/signup/signup';
 import { Signin } from './components/signin/signin';
-import { FlightList } from './components/FLIGHT/FLIGHTS';
-import { authGuard } from './GUARDS/auth.gaurd';
-import { adminGuard } from './GUARDS/admin.gaurd';
-import { TicketBooking } from './components/Booking_Ticket/ticket-booking';
-import { userOrAdminGuard } from './GUARDS/USERADMIN';
-import { PassengerRegistration } from './components/Registration/passenger-registration';
+import { FlightList } from './components/flight-list/flight-list';
+import { authGuard } from './gaurds/auth.gaurd';
+import { adminGuard } from './gaurds/admin.gaurd';
+import { TicketBooking } from './components/ticket-booking/ticket-booking';
+import { userOrAdminGuard } from './gaurds/userOrAdminGuard';
+import { PassengerRegistration } from './components/passenger-registration/passenger-registration';
+import { TicketList } from './components/ticket-list/ticket-list';
+import { FlightAdmin } from './components/flight-admin/flight-admin';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'signup',component:Signup},
     {path:'signin',component:Signin},
-    {path:'signedin',component:LoggedinPage,canActivate: [userOrAdminGuard]},
     {path:'flights',component:FlightList},
     {path:'book',component:TicketBooking,canActivate: [userOrAdminGuard]},
-    {path:'register',component:PassengerRegistration,canActivate: [userOrAdminGuard]}
+    {path:'register',component:PassengerRegistration,canActivate: [userOrAdminGuard]},
+    {path:'tickets',component:TicketList,canActivate:[userOrAdminGuard]},
+    {path:'addFlights',component:FlightAdmin,canActivate:[adminGuard]}
 
 
 

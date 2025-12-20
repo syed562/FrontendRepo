@@ -1,0 +1,105 @@
+@if (tickets$ | async; as tickets) {
+  <div class="pt-5">
+    <ul class="list-group">
+
+      @for (ticket of tickets; track ticket.pnr) {
+        <div class="my-3 d-flex justify-content-center align-items-center w-100">
+          <div class="card p-4 d-flex flex-row justify-content-between align-items-center w-75">
+
+            <!-- Route -->
+            <h5 class="fw-semibold mb-2">
+              {{ ticket.origin }}
+              <span class="text-muted mx-2">→</span>
+              {{ ticket.destination }}
+            </h5>
+
+            <!-- PNR -->
+            <div class="text-muted small mb-2">
+              PNR: <span class="fw-medium text-dark">{{ ticket.pnr }}</span>
+            </div>
+
+            <div class="text-muted small mb-2">
+              Seats
+              <span class="fw-medium text-dark">{{ ticket.numberOfSeats }}</span>
+            </div>
+
+            <!-- Status -->
+            <div class="text-muted small mb-2">
+              Status
+              <span class="fw-medium text-dark">
+                {{ ticket.booked ? 'Booked' : 'Cancelled' }}
+              </span>
+            </div>
+
+            <!-- Time -->
+            <div class="d-flex justify-content-between align-items-center gap-3">
+              <div>
+                <div class="fw-bold">
+                  {{ ticket.departureTime | date:'dd MMM yyyy, hh:mm a' }}
+                </div>
+                <small class="text-muted">Departure</small>
+              </div>
+              <div>
+                <p>  </p>
+              </div>
+              <div class="text-end">
+                <div class="fw-bold">
+                {{ ticket.arrivalTime | date:'dd MMM yyyy, hh:mm a' }}
+                </div>
+                <small class="text-muted">Arrival</small>
+              </div>
+
+              <!-- Cancel Button -->
+              @if (ticket.booked && !isCancelDisabled(ticket)) {
+                <button
+                  class="btn btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#cancelModal"
+                  (click)="openCancelModal(ticket)">
+                  Cancel Ticket
+                </button>
+              }
+            </div>
+
+          </div>
+        </div>
+      }
+
+      @if (tickets.length === 0) {
+        <li class="list-group-item text-muted">
+          No tickets found
+        </li>
+      }
+
+    </ul>
+  </div>
+}
+
+<div class="modal fade" id="cancelModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Cancellation</h5>
+      </div>
+
+      <div class="modal-body">
+        Are you sure you want to cancel this ticket?
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          No
+        </button>
+
+        <button
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="selectedTicket && confirmCancel()">
+          Yes, Cancel
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

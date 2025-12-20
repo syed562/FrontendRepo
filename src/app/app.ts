@@ -1,19 +1,22 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { AuthService } from './services/auth-service';
-import { Router } from '@angular/router';
+import { Component, signal, OnInit } from '@angular/core';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { map, Observable } from 'rxjs';
+import { AuthService } from './services/Authentication/auth-service';
+import { UserRole } from './enums/user-role.enum';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,RouterModule,CommonModule],
-  standalone:true,
+  standalone: true,
+  imports: [RouterOutlet, RouterModule, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
+
   protected readonly title = signal('frontendForSigningIn');
+
+  user$!: Observable<string>;
 
   constructor(
     private readonly authService: AuthService,
@@ -24,12 +27,34 @@ export class App {
     return this.authService.currentUser;
   }
 
+  ngOnInit(): void {
+    this.user$ = this.currentUser$.pipe(
+      map(user =>{
+        console.log(user);
+  return user?.roles.includes(UserRole.ROLE_ADMIN) ? 'admin' : 'user';
+      }
+       
+      )
+    );
+  }
+
   logout() {
-  this.authService.signout().subscribe({
-    next: () => {
-      this.router.navigate(['/']);
-    },
-    error: err => console.error(err)
-  });
-}
+    this.authService.signout().subscribe({
+      next: () => {
+        this.router.navigate(['/']).then(() => window.location.reload());
+      }
+    });
+  }
+
+  flightsAddPage() {
+    this.router.navigate(['/addFlights']);
+  }
+
+  seeProfile() {
+    this.router.navigate(['/register']);
+  }
+
+  seeTickets() {
+    this.router.navigate(['/tickets']);
+  }
 }

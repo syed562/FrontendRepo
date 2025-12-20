@@ -1,0 +1,39 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
+import { searchReq } from '../../models/searchRequest';
+import { Flight } from '../../models/Flight';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class FlightService {
+
+  private readonly BASE_URL =
+    'http://localhost:8765/flight-service/flight';
+
+  constructor(private readonly http: HttpClient) {}
+
+  getFlightByOriginAndDestination(req: searchReq): Observable<Flight[]> {
+    return this.http
+      .post<Flight[]>(
+        `${this.BASE_URL}/getByOriginDestinationDateTime`,
+        req,
+        { withCredentials: true }
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let message = 'Something went wrong';
+
+    if (error.error instanceof ErrorEvent) {
+      message = error.error.message;
+    } else {
+      message = error.error?.message || `Error ${error.status}`;
+    }
+
+    console.error('Auth error:', message);
+    return throwError(() => new Error(message));
+  }
+}
