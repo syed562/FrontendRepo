@@ -71,13 +71,10 @@ next:()=>{console.log('Signin succesful');
 },
 error:(err)=>{
   console.error('Sign in failed:',err.message);
- // this.router.navigate(['/signup'])
+ 
 
 }
   }
   );
 }
 }
-
-
-

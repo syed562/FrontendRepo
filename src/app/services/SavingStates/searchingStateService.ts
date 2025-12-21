@@ -3,7 +3,7 @@ import { searchReq } from "../../models/searchRequest";
 
 @Injectable({providedIn: 'root'})
 export class searchingStateService{
-   // constructor(private readonly req:searchReq){};
+ 
     private searchingState:searchReq={
         origin:'',
         destination:'',

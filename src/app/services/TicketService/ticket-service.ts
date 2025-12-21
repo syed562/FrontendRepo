@@ -13,7 +13,7 @@ export class TicketService {
 
   constructor(private http: HttpClient) {}
 
-  // Get tickets by email
+ 
   getTicketsByEmail(email: string): Observable<Ticket[]> {
     return this.http
       .get<Ticket[]>(`${this.baseUrl}/getTicketsByEmail/${email}`, {
@@ -22,7 +22,7 @@ export class TicketService {
       .pipe(catchError(this.handleError));
   }
 
-  // Cancel ticket
+
   cancelTicket(id: number): Observable<string> {
     return this.http
       .delete(`${this.baseUrl}/cancel/${id}`, {
@@ -32,7 +32,7 @@ export class TicketService {
       .pipe(catchError(this.handleError));
   }
 
-  // Book ticket
+
   bookTicketByPassengerIdandFlightId(
     flightId: number,
     passengerId: number,

@@ -21,9 +21,7 @@ import { searchingStateService } from '../../services/SavingStates/searchingStat
 })
 export class FlightList {
 
-  @Input() flights: Flight[] | null = []; //we get this input from the parent component which is home!!
-  //and we display it using our template
-
+  @Input() flights: Flight[] | null = []; 
   constructor(
     private readonly router: Router,
     private readonly authService: AuthService,
@@ -37,14 +35,14 @@ export class FlightList {
 
   this.authService.currentUser
     .pipe(
-      take(1), //take the first value and unsubscribes, if not it just listens forever as behaviour subject never completes
+      take(1), 
       switchMap(user => {
         if (!user?.email) {
           this.router.navigate(['/signin']);
           throw new Error('User not logged in');
         }
 
-        // email then passengerId (number)
+        
         return this.passengerService.getPassengerIdByEmail(user.email);
       })
     )
@@ -52,14 +50,14 @@ export class FlightList {
       next: passengerId => {
         console.log('Passenger ID found:', passengerId);
 
-        // passenger exists then go to booking page
+        
         
         this.router.navigate(['/book'], {
           queryParams: { flightId } 
         });
       },
       error: err => {
-        // passenger not registered
+     
         if (err.status === 404) {
           this.router.navigate(['/register'], {
           queryParams: { flightId } 

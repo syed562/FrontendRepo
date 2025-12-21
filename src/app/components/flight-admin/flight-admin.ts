@@ -33,6 +33,8 @@ export class FlightAdmin implements OnInit {
     price: 0,
     departureTime: '',
     arrivalTime: '',
+    totalSeats:0,
+    availableSeats:0
   };
   form = new FormGroup({
     airline: new FormControl('',  [Validators.required, Validators.pattern('^[A-Za-z ]+$')]),
@@ -43,6 +45,7 @@ export class FlightAdmin implements OnInit {
     departureTime: new FormControl('', Validators.required),
     arrivalTime: new FormControl('', Validators.required),
     arrivalDate: new FormControl('', Validators.required),
+    totalSeats:new FormControl(0,Validators.required)
   });
 
   register() {
@@ -55,7 +58,7 @@ export class FlightAdmin implements OnInit {
       this.form.value.departureDate! + 'T' + this.form.value.departureTime! + ':00',
     arrivalTime:
       this.form.value.arrivalDate! + 'T' + this.form.value.arrivalTime! + ':00',
-  };
+totalSeats: this.form.value.totalSeats ?? 0 };
     this.flightAdmin.flightAdd(newFlight).subscribe(
       {
         next:()=> {console.log("flight registered");

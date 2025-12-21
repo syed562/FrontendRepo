@@ -1,12 +1,12 @@
 
 
 body {
- background-color:#777886;
+ 
   margin: 0;
-  color: #434E78;
+  color: #5e0414;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-   min-height: 100vh;
-  background-image: url('assets/image.jpeg');
+   min-height: 90vh;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSgtcHjcwudxIxD0LWtYq8RdZR29TIanrvbw&s');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,14 +15,14 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(255, 255, 255, 0.65); 
+  background: rgba(121, 50, 68, 0.65); 
   z-index: -1;
 } 
 
 
 .card {
   backdrop-filter: blur(6px)!important;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(91, 5, 5, 0.95);
 }
 
 
@@ -33,7 +33,7 @@ html, body {
   color: rgba(39, 41, 42, 0.479) !important;
 }
 .navbar {
-   background: linear-gradient(135deg, #607B8F, #4A6572) !important;
+   background: linear-gradient(135deg, #6d0305, #b42d12) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
 }
@@ -55,18 +55,18 @@ html, body {
 }
 
 .btn-secondary {
-  background-color: #607B8F !important;
-  border-color: #607B8F !important;
+  background-color: #b7210d !important;
+  border-color: #9b3709 !important;
   color: #ffffff;
 }
 .bg-secondary{
-    background-color: #607B8F !important;
-  border-color: #607B8F !important;
+    background-color: #d96e3f  !important;
+  border-color: #9b3709 !important;
   color: #ffffff;
 }
 
 .btn-secondary:hover {
-  background-color: #566d80 !important;
+  background-color: #9b3709 !important;
 }
 
 .card {
@@ -87,22 +87,22 @@ a {
 }
 
 a:hover {
-  color: #d96e3f;
+  color: #ae3806;
 }
 
 .badge-primary {
-  background-color: #E97F4A;
+  background-color: #d25211;
 }
 
 .badge-secondary {
-  background-color: #607B8F;
+  background-color: #5b0505;
 }
 
 .form-control {
-  border: 1px solid #607B8F;
+  border: 1px solid #9c1010;
 }
 
 .form-control:focus {
-  border-color: #E97F4A;
+  border-color: #ed5f17;
   box-shadow: 0 0 0 0.2rem rgba(233, 127, 74, 0.25);
 }

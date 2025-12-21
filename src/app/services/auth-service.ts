@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { userDetails } from '../ENTITIES/userDetails';
-import { user } from '../ENTITIES/user';
+import { userDetails } from '../models/userDetails';
+import { user } from '../models/user';
 import { BehaviorSubject, catchError, throwError,of } from 'rxjs';
-import { UserRole } from '../ROLE/user-role.enum';
-import { UserResponse } from '../ENTITIES/UserResponse';
+import { UserRole } from '../enums/user-role.enum';
+import { UserResponse } from '../models/UserResponse';
 import { tap } from 'rxjs';
 
 @Injectable({
