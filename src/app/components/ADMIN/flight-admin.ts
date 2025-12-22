@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FlightAdminService } from '../../services/FlightAdmin/flight-admin-service';
-import { Flight } from '../../models/Flight';
+import { Flight } from '../../ENTITIES/Flight';
 import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { OnInit } from '@angular/core';

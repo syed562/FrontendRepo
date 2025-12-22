@@ -11,7 +11,7 @@ import {
 } from 'rxjs';
 
 import { TicketService } from '../../services/TicketService/ticket-service';
-import { Ticket } from '../../models/Ticket';
+import { Ticket } from '../../ENTITIES/Ticket';
 import { AuthService } from '../../services/Authentication/auth-service';
 import { PassengerService } from '../../services/PassengerService/passenger-service';
 import { Router, ActivatedRoute } from '@angular/router';

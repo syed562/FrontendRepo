@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Profile } from '../../models/Passenger';
+import { Profile } from '../../ENTITIES/Passenger';
 import { HttpClient } from '@angular/common/http';
 import { switchMap } from 'rxjs';
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit,OnDestroy, Output } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject, switchMap, take } from 'rxjs';
-import { Ticket } from '../../models/Ticket';
+import { Ticket } from '../../ENTITIES/Ticket';
 import { TicketService } from '../../services/TicketService/ticket-service';
 import { AuthService } from '../../services/Authentication/auth-service';
 import { AsyncPipe, DatePipe } from '@angular/common';

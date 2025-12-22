@@ -4,8 +4,8 @@ import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { FlightService } from '../../services/FlightService/flight-service';
-import { Flight } from '../../models/Flight';
-import { searchReq } from '../../models/searchRequest';
+import { Flight } from '../../ENTITIES/Flight';
+import { searchReq } from '../../ENTITIES/searchRequest';
 import { AuthService } from '../../services/Authentication/auth-service';
 import { PassengerService } from '../../services/PassengerService/passenger-service';
 import { take, switchMap } from 'rxjs/operators';

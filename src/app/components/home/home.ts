@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { searchReq } from '../../models/searchRequest';
+import { searchReq } from '../../ENTITIES/searchRequest';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { Flight } from '../../models/Flight';
+import { Flight } from '../../ENTITIES/Flight';
 import { FlightService } from '../../services/FlightService/flight-service';
-import { FlightList } from '../flight-list/flight-list';
+import { FlightList } from '../FLIGHTS/flight-list';
 import { originDestinationDifferent } from '../../validatorFunctions/originDestinationDifferent';
 import { searchingStateService } from '../../services/SavingStates/searchingStateService';
 @Component({

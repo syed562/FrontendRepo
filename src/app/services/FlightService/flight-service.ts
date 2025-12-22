@@ -40,8 +40,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
-import { searchReq } from '../../models/searchRequest';
-import { Flight } from '../../models/Flight';
+import { searchReq } from '../../ENTITIES/searchRequest';
+import { Flight } from '../../ENTITIES/Flight';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Flight } from '../../models/Flight';
+import { Flight } from '../../ENTITIES/Flight';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({

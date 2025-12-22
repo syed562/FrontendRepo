@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { searchReq } from "../../models/searchRequest";
+import { searchReq } from "../../ENTITIES/searchRequest";
 
 @Injectable({providedIn: 'root'})
 export class searchingStateService{
