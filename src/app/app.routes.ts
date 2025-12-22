@@ -11,6 +11,7 @@ import { userOrAdminGuard } from './gaurds/userOrAdminGuard';
 import { PassengerRegistration } from './components/passenger-registration/passenger-registration';
 import { TicketList } from './components/ticket-list/ticket-list';
 import { FlightAdmin } from './components/flight-admin/flight-admin';
+import { ChangePassword } from './components/change-password/change-password';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'signup',component:Signup},
@@ -19,7 +20,8 @@ export const routes: Routes = [
     {path:'book',component:TicketBooking,canActivate: [userOrAdminGuard]},
     {path:'register',component:PassengerRegistration,canActivate: [userOrAdminGuard]},
     {path:'tickets',component:TicketList,canActivate:[userOrAdminGuard]},
-    {path:'addFlights',component:FlightAdmin,canActivate:[adminGuard]}
+    {path:'addFlights',component:FlightAdmin,canActivate:[adminGuard]},
+       {path:'change-password',component:ChangePassword}
 
 
 

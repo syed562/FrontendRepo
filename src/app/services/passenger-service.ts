@@ -6,7 +6,7 @@ import { switchMap } from 'rxjs';
   providedIn: 'root',
 })
 export class PassengerService {
-  // http://localhost:8765/passenger-service/passenger/register
+
   constructor(private readonly http:HttpClient){
     
   }

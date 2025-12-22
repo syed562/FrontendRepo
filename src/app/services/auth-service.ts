@@ -72,10 +72,10 @@ export class AuthService {
   private handleError(error:HttpErrorResponse){
     let message='Something went wrong';
     if(error.error instanceof ErrorEvent){
-      //cient side error
+    
       message=error.error.message;
     }else{
-      //backend error
+   
       message=error.error?.message || 'Error ${error.status}';
     }
     console.error('Auth error:',message);
