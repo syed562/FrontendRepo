@@ -9,7 +9,7 @@ import { Flight } from '../models/Flight';
 })
 export class FlightService {
   
-  baseUrl = "http://localhost:8765/flight-service/flight/getByOriginDestinationDateTime";
+  baseUrl = "http://localhost:9002/flight/getByOriginDestinationDateTime";
 
   constructor(private readonly http:HttpClient){}
   getFlightByOriginAndDestination(req:searchReq):Observable<Flight[]>{

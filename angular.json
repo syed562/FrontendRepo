@@ -15,12 +15,14 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+          "assets": [
+  {
+    "glob": "**/*",
+    "input": "public"
+  },
+  "src/assets"
+]
+,
            "styles": [
     "node_modules/bootstrap/dist/css/bootstrap.css",
     "src/styles.css"

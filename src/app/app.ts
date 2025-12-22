@@ -15,7 +15,7 @@ import { UserRole } from './enums/user-role.enum';
 export class App implements OnInit {
 
   protected readonly title = signal('frontendForSigningIn');
-
+ UserRole = UserRole;
   user$!: Observable<string>;
 
   constructor(
@@ -57,4 +57,5 @@ export class App implements OnInit {
   seeTickets() {
     this.router.navigate(['/tickets']);
   }
+  
 }
